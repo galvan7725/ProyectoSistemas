@@ -1,0 +1,44 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9/02/2019, 02:18:14 PM
+    Author     : galva
+*/
+
+body{
+    background-image: url("images/fr.jpg");
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: cursive;
+     position: relative;
+}
+
+.conteiner{
+    font-family: cursive;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    font-size: 85%;
+   
+    
+}
+
+.conteiner2{
+    font-family: cursive;
+    
+    
+    position: absolute; top: 5px; left: 5px; text-align: center;
+    
+}
+
+.loginButton{
+    text-align: center;
+    
+}
+
+
