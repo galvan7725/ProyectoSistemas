@@ -5,20 +5,27 @@
  */
 package Beans;
 
+import Util.MyUtil;
+import Util.loginClass;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import javax.inject.Named;
+
+import org.primefaces.context.RequestContext;
 
 /**
  *
  * @author galva
  */
-@Named(value="loginBean")
+@ManagedBean
 @RequestScoped
 public class loginBean {
     
-    private String matricula;
+    private int matricula;
     private String clave;
     private int rol;
     private int carrera;
@@ -40,11 +47,11 @@ public class loginBean {
     }
     
 
-    public String getMatricula() {
+    public int getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(String matricula) {
+    public void setMatricula(int matricula) {
         this.matricula = matricula;
     }
 
@@ -58,8 +65,32 @@ public class loginBean {
     
     
     
-    public void login(ActionEvent actionEvent){
-    
-    
+    public void login(ActionEvent actionEvent) throws Exception{
+    RequestContext context = RequestContext.getCurrentInstance();
+        FacesMessage msg;
+        boolean loggedIn;
+        String ruta = "";
+        
+        loginClass l = new loginClass();
+        
+        if(l.login(this.matricula, this.rol, this.carrera, this.clave)){
+            System.out.println("login");
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", String.valueOf(this.matricula));
+            loggedIn = true;
+         
+            
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", this.matricula);
+             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("rol", this.rol);
+              FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", this.carrera);
+               ruta = MyUtil.basepathlogin() + "views/Index.xhtml";
+            //FacesContext.getCurrentInstance().getExternalContext().redirect("views/Index.xhtml");
+        }else{
+            loggedIn = false;
+            msg = new FacesMessage(FacesMessage.SEVERITY_FATAL, "LoginError", "Usuario y/o clave incorrectas");
+            
+        }
+    FacesContext.getCurrentInstance().addMessage(null, msg);
+        context.addCallbackParam("loggedIn", loggedIn);
+        context.addCallbackParam("ruta", ruta);
     }
 }

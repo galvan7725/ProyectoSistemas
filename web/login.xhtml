@@ -8,57 +8,63 @@
         <title>Login</title>
         <h:outputStylesheet library="css" name="login.css"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"/>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     </h:head>
-   <h:body>
+    <h:body>
         <div class="conteiner2">
-                        <h:form>
-                    <h3 style="margin-top:0; color: white;">Cliente</h3>
-                    <p:clock />
+            <h:form>
+                <h3 style="margin-top:0; color: white;">Cliente</h3>
+                <p:clock />
 
-                    <h3 style="color: white;">Servidor</h3>
-                    <p:clock pattern="HH:mm:ss dd.MM.yyyy" mode="server" />
+                <h3 style="color: white;">Servidor</h3>
+                <p:clock pattern="HH:mm:ss dd.MM.yyyy" mode="server" />
 
-                    <h3 style="color: white;">Analogico</h3>
-                    <p:clock displayMode="analog" />
-                        </h:form>
-              </div>
-        
-       <div class="conteiner">
-            
+                <h3 style="color: white;">Analogico</h3>
+                <p:clock displayMode="analog" />
+            </h:form>
+        </div>
+
+        <div class="conteiner">
+
             <p:growl id="growl" showDetail="true" life="3000"/>
             <h:form id="formLogin">
-                <p:panel header="Ingresar Usuario y Clave" style="text-align: center;">
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputLabel for="username" value="Usuario"/>
-                        <p:inputText value="#{loginBean.usuario1}" id="username" required="true" label="username"/>
-                    
-                        <h:outputLabel for="password" value="Contraseña"/>
-                      
-                        <p:password value="#{loginBean.clave1}" id="password" required="true" label="password"/>
+                <p:panel header="Ingresar Usuario y Clave" style="text-align: center;" >
+                    <h:panelGrid columns="1" cellpadding="3">
                         
-                       <p:outputLabel for="console" value="Rol:" />
-                       <p:selectOneRadio id="console" value="#{loginBean.rol}" required="true">
-                                <f:selectItem itemLabel="Usuario" itemValue="2" />
-                                <f:selectItem itemLabel="Administrador" itemValue="1" />                                
-                            </p:selectOneRadio>
+                        <h:outputLabel for="username" value="Usuario:" />
+                        <p:inputText value="#{loginBean.matricula}" id="username" required="true" label="username"/>
                         
+                        <h:outputLabel for="password" value="Contraseña:"/>
+
+                        <p:password value="#{loginBean.clave}" id="password" required="true" label="password"/>
+
+                        <p:outputLabel for="rol" value="Rol:" />
+                        <p:selectOneRadio id="rol" value="#{loginBean.rol}" required="true" >
+                            <f:selectItem itemLabel="Estudiante" itemValue="1" />
+                            <f:selectItem itemLabel="Docente" itemValue="2" />
+                            <f:selectItem itemLabel="Administrador" itemValue="3" />
+                        </p:selectOneRadio>
                         
-                      
-                       <f:facet name="footer" id="footer">
+                        <p:outputLabel for="carrera" value="Carrera:" />
+                        <p:selectOneRadio id="carrera" value="#{loginBean.carrera}" required="true">
+                            <f:selectItem itemLabel="ISC" itemValue="1" />                           
+                        </p:selectOneRadio>
+
+
+                        <f:facet name="footer" id="footer">
                             <p:commandButton id="loginButton" value="Login" update=":growl" actionListener="#{loginBean.login(actionEvent)}" icon="ui-icon-power" oncomplete="handleLoginRequest(xhr, status, args)"/>
                         </f:facet>
                     </h:panelGrid>
                 </p:panel>
             </h:form>
-      
+
         </div>
-        
-        
-        
-        
-     
-        <script type="text/javascript">
+
+
+
+
+
+          <script type="text/javascript">
             function handleLoginRequest(xhr, status, args){
                 if(args.validationFailed || !args.loggedIn){
                     jQuery('#formLogin').effect("shake", {times:3}, 100);
