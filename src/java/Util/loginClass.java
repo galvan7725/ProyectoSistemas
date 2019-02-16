@@ -17,15 +17,20 @@ import java.sql.SQLException;
  */
 public class loginClass {
 
-    public boolean login(int id_usuario, int id_rol, int id_carrera, String clave) throws SQLException {
-        Object[] respuesta = new Object[4];
+    public boolean login(int id_usuario, int id_rol, int id_carrera, String clave) throws Exception {
+        try {
+         Object[] respuesta = new Object[4];
         respuesta = consulta_datos(id_usuario, id_rol, id_carrera, clave);
-
-        if(String.valueOf(respuesta[0]) != null){
+       
+        if(respuesta != null){
         return true;
         }else{
         return false;
+        }   
+        } catch (Exception e) {
+            throw e;
         }
+        
     }
 
     public String[] consulta_datos(int id_usuario, int id_rol, int id_carrera, String clave) throws SQLException {

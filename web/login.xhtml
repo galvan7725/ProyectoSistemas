@@ -30,10 +30,10 @@
             <h:form id="formLogin">
                 <p:panel header="Ingresar Usuario y Clave" style="text-align: center;" >
                     <h:panelGrid columns="1" cellpadding="3">
-                        
+
                         <h:outputLabel for="username" value="Usuario:" />
                         <p:inputText value="#{loginBean.matricula}" id="username" required="true" label="username"/>
-                        
+
                         <h:outputLabel for="password" value="Contraseña:"/>
 
                         <p:password value="#{loginBean.clave}" id="password" required="true" label="password"/>
@@ -44,10 +44,15 @@
                             <f:selectItem itemLabel="Docente" itemValue="2" />
                             <f:selectItem itemLabel="Administrador" itemValue="3" />
                         </p:selectOneRadio>
-                        
+
                         <p:outputLabel for="carrera" value="Carrera:" />
                         <p:selectOneRadio id="carrera" value="#{loginBean.carrera}" required="true">
-                            <f:selectItem itemLabel="ISC" itemValue="1" />                           
+                            <f:selectItem itemLabel="ISC" itemValue="1" /> 
+                            <f:selectItem itemLabel="TICS" itemValue="2" /> 
+                            <f:selectItem itemLabel="IIA" itemValue="3" /> 
+                            <f:selectItem itemLabel="II" itemValue="4" /> 
+                            <f:selectItem itemLabel="IGE" itemValue="5" /> 
+                            <f:selectItem itemLabel="G" itemValue="6" /> 
                         </p:selectOneRadio>
 
 
@@ -64,12 +69,12 @@
 
 
 
-          <script type="text/javascript">
-            function handleLoginRequest(xhr, status, args){
-                if(args.validationFailed || !args.loggedIn){
-                    jQuery('#formLogin').effect("shake", {times:3}, 100);
+        <script type="text/javascript">
+            function handleLoginRequest(xhr, status, args) {
+                if (args.validationFailed || !args.loggedIn) {
+                    jQuery('#formLogin').effect("shake", {times: 3}, 100);
                     console.log("Error");
-                }else{
+                } else {
                     location.href = args.ruta;
                 }
             }

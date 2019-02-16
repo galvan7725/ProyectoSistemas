@@ -72,7 +72,8 @@ public class loginBean {
         String ruta = "";
         
         loginClass l = new loginClass();
-        
+        boolean lo = false;
+        lo=l.login(this.matricula, this.rol, this.carrera, this.clave);
         if(l.login(this.matricula, this.rol, this.carrera, this.clave)){
             System.out.println("login");
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", String.valueOf(this.matricula));
@@ -85,11 +86,12 @@ public class loginBean {
                ruta = MyUtil.basepathlogin() + "views/Index.xhtml";
             //FacesContext.getCurrentInstance().getExternalContext().redirect("views/Index.xhtml");
         }else{
-            loggedIn = false;
             msg = new FacesMessage(FacesMessage.SEVERITY_FATAL, "LoginError", "Usuario y/o clave incorrectas");
+            loggedIn = false;
+            
             
         }
-    FacesContext.getCurrentInstance().addMessage(null, msg);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
         context.addCallbackParam("loggedIn", loggedIn);
         context.addCallbackParam("ruta", ruta);
     }
