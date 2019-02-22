@@ -14,8 +14,8 @@
 #left {
     float: left;
     background-color: #ece3a5;
-    padding: 5px;
-    width: 150px;
+    padding: 0px;
+    width: 0px;
 }
 
 #right {
@@ -27,7 +27,7 @@
 
 .center_content {
     position: relative;
-    background-color: #dddddd;
+    background-color: rgba(225, 31, 31,0.5);
     padding: 5px;
 }
 

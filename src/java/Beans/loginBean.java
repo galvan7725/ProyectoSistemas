@@ -6,6 +6,7 @@
 package Beans;
 
 import Util.MyUtil;
+import Util.getDatos;
 import Util.loginClass;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -29,6 +30,8 @@ public class loginBean {
     private String clave;
     private int rol;
     private int carrera;
+    private String nombre;
+    private String aCarrera;
 
     public int getRol() {
         return rol;
@@ -62,6 +65,22 @@ public class loginBean {
     public void setClave(String clave) {
         this.clave = clave;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getaCarrera() {
+        return aCarrera;
+    }
+
+    public void setaCarrera(String aCarrera) {
+        this.aCarrera = aCarrera;
+    }
     
     
     
@@ -78,11 +97,17 @@ public class loginBean {
             System.out.println("login");
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", String.valueOf(this.matricula));
             loggedIn = true;
-         
+            String[] data = new String[2];
+              getDatos g = new getDatos();
+              data=g.getDatos(this.matricula);
             
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", this.matricula);
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("id_usuario", this.matricula);
              FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("rol", this.rol);
-              FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", this.carrera);
+              FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("carrera", this.carrera);
+              FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("nombre", data[0]);
+              FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("aCarrera", data[1]);
+              
+              
                ruta = MyUtil.basepathlogin() + "views/Index.xhtml";
             //FacesContext.getCurrentInstance().getExternalContext().redirect("views/Index.xhtml");
         }else{

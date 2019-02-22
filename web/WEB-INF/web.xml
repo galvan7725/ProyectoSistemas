@@ -29,4 +29,19 @@
         <param-name>primefaces.FONT_AWESOME</param-name>
         <param-value>true</param-value>
     </context-param>
+    <servlet-mapping>
+        <servlet-name>RenderImage</servlet-name>
+        <url-pattern>/views/RenderImage</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>RenderImage</display-name>
+        <servlet-name>RenderImage</servlet-name>
+        <servlet-class>Beans.RenderImage</servlet-class>
+    </servlet>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
 </web-app>

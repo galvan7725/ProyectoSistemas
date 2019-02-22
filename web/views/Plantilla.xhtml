@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
 
@@ -11,13 +12,14 @@
         <h:outputStylesheet name="./css/templateISC.css"/>
         <h:outputStylesheet name="./css/default.css"/>
         <h:outputStylesheet name="./css/cssLayout.css"/>
-       
-        
+        <f:event type="preRenderView" listener="#{templateBean.initDatos()}"/>
+
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
 
 
-        <title>Facelets Template</title>
+        <title>ITST</title>
     </h:head>
 
     <h:body>
@@ -26,42 +28,55 @@
             <ui:insert name="top">
                 <h:form id="navbar">
                     <nav class="navbar navbar-expand-lg sticky-top nav-ISC">
-                       
-                        <p:commandButton value=">>>" icon="ui-icon-transferthick-e-w" style="color: red; background: black; margin-right: 15px;"></p:commandButton>
-                       
-                        
-                        
-                        
+
+                        <p:commandButton value=">>>" class="boton" icon="ui-icon-transferthick-e-w" oncomplete="PF('sidebar1').show()" style=" margin-right: 15px;"></p:commandButton>
+
                         <a class="navbar-brand" href="#">
-                            <img src="#{appBean.baseUrl}resources/images/msi.png" width="30" height="30" class="d-inline-block align-top" alt="User image"/>
-                                I.T.S.T.
+                            <p:graphicImage library="images" name="msi.png" width="40" alt="user image" class="d-inline-block align-top"/>
+
+                            I.T.S.T.
                         </a>
-                       
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
+
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="color:  white;">
+                            <span class="navbar-toggler-icon" style="background: white;"></span>
                         </button>
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto w-100 justify-content-end text-center">
+                                <li class=" nav-item active">
+                                    <p:graphicImage library="images" name="notification2.png" class="icono color-icono"></p:graphicImage>
+                                </li>
+                                <p:spacer width="10" height="0" />
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+
+                                    <p:graphicImage id="IconoCarrera" value="RenderImage?Image_Id=0&amp;contexto=IconoCarrera"  class="icono" ></p:graphicImage>
+
+                                </li>
+                                <p:spacer width="10" height="0" />
+                                <li class="nav-item">
+                                    <p:outputLabel value="#{templateBean.carrera}" class="texto nav-link"/>
+                                </li>
+                                <p:spacer width="10" height="0" />
+                                <li class="nav-item active">
+                                    <p:graphicImage id="IconoUsuario" value="RenderImage?Image_Id=0&amp;contexto=IconoSesion"  class="icono" ></p:graphicImage>
+                                    <p:overlayPanel id="imgPanel" for="IconoUsuario" class="panel" showEffect="blind" hideEffect="explode" showEvent="mouseover" hideEvent="mousedown"
+                                                    dismissable="true" showCloseIcon="true" style="width: 200px; height: 200px;">
+
+                                        <p:graphicImage id="IconoUser" value="RenderImage?Image_Id=0&amp;contexto=IconoSesion"  class="icono" ></p:graphicImage> 
+                                        <p:separator/>
+                                        <p:outputLabel value="#{templateBean.nombre} #{templateBean.carrera}" class="texto" style="font-size: small;"/>
+                                        <p:outputLabel value="En linea" style="color: green; font-size: small;"/>
+                                        <p:separator/>
+                                        <p:commandButton id="ajustes" icon="ui-icon-gear" iconPos="center"  style="float: left;"/>
+                                        <p:tooltip id="toolTip1" for="ajustes" value="Ajustes"
+                                                   showEffect="clip" hideEffect="explode" position="bottom"/>
+                                        <p:commandButton id="salir" icon=" ui-icon-power" iconPos="center" style="float: right;"/>
+                                        <p:tooltip id="toolTip2" for="salir" value="Salir"
+                                                   showEffect="clip" hideEffect="explode" position="bottom"/>
+                                    </p:overlayPanel> 
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Link</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        I.T.S.T.
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                                    <p:outputLabel value="#{templateBean.nombre}" class="texto nav-link"/>
                                 </li>
                             </ul>
 
@@ -72,11 +87,40 @@
             </ui:insert>
         </div>
         <div>
+
             <div id="left">
-                <ui:insert name="left">Left</ui:insert>
+                <ui:insert name="left">
+                    <p:sidebar widgetVar="sidebar1" class="sidebar" baseZIndex="10000">
+                        <h1 class="texto text-center" style="font-weight:normal">Secciones</h1>
+                        <h:form>
+                            <p:panel>
+                                <p:menu toggleable="true" style="width: 100%;">
+                                    <p:submenu label="Ajax" style="">
+                                        <p:menuitem value="Save" action="#{menuView.save}"  icon="pi pi-save" />
+                                        <p:menuitem value="Update" action="#{menuView.update}"  icon="pi pi-refresh"/>
+                                    </p:submenu>
+                                    <p:separator  style="width:98%;height:20px; margin-top: 5px; margin-bottom: 5px;" />
+                                    <p:submenu label="Productos">
+                                        <p:menuitem value="Todos los productos" url="#{appBean.baseUrl}faces/views/Productos.xhtml"  ajax="false" icon=" ui-icon-cart"/>
+                                        <p:menuitem value="Ctegorias" ajax="false" icon=" ui-icon-cart"/>
+                                    </p:submenu>
+                                    <p:separator  style="width:98%;height:20px; margin-top: 5px; margin-bottom: 5px;" />
+                                    <p:submenu label="Usuarios">
+                                        <p:menuitem value="Administrar U." url="#{appBean.baseUrl}faces/views/Usuarios.xhtml" icon="ui-icon-person"/>
+                                        <p:menuitem value="Internal" icon="/resources/images/icons/cart.png"/>
+                                    </p:submenu>
+                                </p:menu>
+                            </p:panel>
+                        </h:form> 
+                        <p:commandButton id="bt" icon="ui-icon-seek-prev" iconPos="center" class="boton" oncomplete="PF('sidebar1').hide()" style="float: right;"/>
+                    </p:sidebar>
+                </ui:insert>
             </div>
-            <div id="content" class="left_content">
-                <ui:insert name="content">Content</ui:insert>
+
+            <div id="content" class="center_content">
+                <ui:insert name="content">
+                    Content
+                </ui:insert>
             </div>
         </div>
         <div id="bottom">
@@ -86,21 +130,23 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="text-center;">
-                                    <p >© 2018 DigiPro . All rights reserved. Created by AazzTech
+                                    <p >© 2019 Luis Galvan . En desarrollo desde Agosto/2018
 
                                     </p>
                                 </div>
 
-                              
+
                             </div>
                         </div>
                     </div>
                 </div>
             </ui:insert>
         </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <!-- script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
     </h:body>
 
 </html>
