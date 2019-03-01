@@ -24,7 +24,7 @@ public class loginController {
         try {
            usuario =  (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("id_usuario");
            if(usuario == null){
-               System.err.println("Usuario nulo");
+               System.out.println("Usuario nulo");
            FacesContext.getCurrentInstance().getExternalContext().redirect("./../login.xhtml");
            }
         } catch (Exception e) {

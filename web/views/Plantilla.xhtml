@@ -43,8 +43,8 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto w-100 justify-content-end text-center">
-                                
-                                
+
+
                                 <p:spacer width="10" height="0" />
                                 <li class="nav-item active">
                                     <p:graphicImage id="IconoUsuario" value="RenderImage?Image_Id=0&amp;contexto=IconoSesion"  class="icono" ></p:graphicImage>
@@ -59,7 +59,13 @@
                                         <p:commandButton id="ajustes" icon="ui-icon-gear" iconPos="center"  style="float: left;"/>
                                         <p:tooltip id="toolTip1" for="ajustes" value="Ajustes"
                                                    showEffect="clip" hideEffect="explode" position="bottom"/>
-                                        <p:commandButton id="salir" icon=" ui-icon-power" iconPos="center" style="float: right;"/>
+                                        <p:commandButton id="salir" action="#{loginController.borrarSession()}" icon=" ui-icon-power" iconPos="center" style="float: right;">
+                                            <p:confirm header="Confirme" message="Esta seguro de Salir?" icon=" ui-icon-alert " />
+                                        </p:commandButton>
+                                        <p:confirmDialog global="true" showEffect="explode" hideEffect="explode">
+                                            <p:commandButton value="Si" styleClass="ui-confirmdialog-yes" icon="ui-icon-circle-check" />
+                                            <p:commandButton value="No"  styleClass="ui-confirmdialog-no" icon="ui-icon-circle-close" style="float: right;" />
+                                        </p:confirmDialog>
                                         <p:tooltip id="toolTip2" for="salir" value="Salir"
                                                    showEffect="clip" hideEffect="explode" position="bottom"/>
                                     </p:overlayPanel> 
@@ -69,15 +75,15 @@
                                 </li>
                                 <p:spacer width="10" height="0" />
                                 <li class=" nav-item active">
-                                    
+
                                     <a href="#" class="notification">
-                                    <p:graphicImage library="images" name="notification2.png" class="icono color-icono">
-                                        <span class="badge">3</span>
-                                    </p:graphicImage>
+                                        <p:graphicImage library="images" name="notification2.png" class="icono color-icono">
+                                            <span class="badge">3</span>
+                                        </p:graphicImage>
                                     </a>
-                                     
+
                                 </li>
-                                
+
                                 <p:spacer width="20" height="10" />
                                 <li class="nav-item active">
 
@@ -88,8 +94,8 @@
                                 <li class="nav-item">
                                     <p:outputLabel value="#{templateBean.carrera}" class="texto nav-link"/>
                                 </li>
-                                
-                                
+
+
                             </ul>
 
                         </div>
@@ -105,24 +111,24 @@
                     <p:sidebar widgetVar="sidebar1" class="sidebar" baseZIndex="10000">
                         <h1 class="texto text-center" style="font-weight:normal">Secciones</h1>
                         <h:form>
-                            
-                                <p:menu toggleable="true" style="width: 100%;">
-                                    <p:submenu label="Ajax" style="">
-                                        <p:menuitem value="Save" action="#{menuView.save}"  icon="pi pi-save" />
-                                        <p:menuitem value="Update" action="#{menuView.update}"  icon="pi pi-refresh"/>
-                                    </p:submenu>
-                                    <p:separator  style="width:98%;height:20px; margin-top: 5px; margin-bottom: 5px;" />
-                                    <p:submenu label="Productos">
-                                        <p:menuitem value="Todos los productos" url="#{appBean.baseUrl}faces/views/Productos.xhtml"  ajax="false" icon=" ui-icon-cart"/>
-                                        <p:menuitem value="Ctegorias" ajax="false" icon=" ui-icon-cart"/>
-                                    </p:submenu>
-                                    <p:separator  style="width:98%;height:20px; margin-top: 5px; margin-bottom: 5px;" />
-                                    <p:submenu label="Usuarios">
-                                        <p:menuitem value="Administrar U." url="#{appBean.baseUrl}faces/views/Usuarios.xhtml" icon="ui-icon-person"/>
-                                        <p:menuitem value="Internal" icon="/resources/images/icons/cart.png"/>
-                                    </p:submenu>
-                                </p:menu>
-                          
+
+                            <p:menu toggleable="true" style="width: 100%;">
+                                <p:submenu label="Ajax" style="">
+                                    <p:menuitem value="Save" action="#{menuView.save}"  icon="pi pi-save" />
+                                    <p:menuitem value="Update" action="#{menuView.update}"  icon="pi pi-refresh"/>
+                                </p:submenu>
+                                <p:separator  style="width:98%;height:20px; margin-top: 5px; margin-bottom: 5px;" />
+                                <p:submenu label="Productos">
+                                    <p:menuitem value="Todos los productos" url="#{appBean.baseUrl}faces/views/Productos.xhtml"  ajax="false" icon=" ui-icon-cart"/>
+                                    <p:menuitem value="Ctegorias" ajax="false" icon=" ui-icon-cart"/>
+                                </p:submenu>
+                                <p:separator  style="width:98%;height:20px; margin-top: 5px; margin-bottom: 5px;" />
+                                <p:submenu label="Usuarios">
+                                    <p:menuitem value="Administrar U." url="#{appBean.baseUrl}faces/views/Usuarios.xhtml" icon="ui-icon-person"/>
+                                    <p:menuitem value="Internal" icon="/resources/images/icons/cart.png"/>
+                                </p:submenu>
+                            </p:menu>
+
                         </h:form> 
                         <p:commandButton id="bt" icon="ui-icon-seek-prev" iconPos="center" class="boton" oncomplete="PF('sidebar1').hide()" style="float: right;"/>
                     </p:sidebar>
