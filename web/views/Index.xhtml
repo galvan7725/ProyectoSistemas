@@ -10,7 +10,7 @@
         <ui:composition template="./Plantilla.xhtml">
             <ui:define name="content">
                 <h:form id="form">
-                    <p:contentFlow value="#{galeriaBean.images}" var="image" >
+                    <p:contentFlow value="#{galeriaBean.images}" var="image" class="galeria"  >
                         <p:graphicImage name="images/#{image}" styleClass="content" />
                         <div class="caption" >#{image}</div>
                     </p:contentFlow>
