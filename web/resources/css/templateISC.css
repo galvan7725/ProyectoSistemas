@@ -59,7 +59,7 @@ body{
     
 }
 .color-icono{
-    background-color: rgba(255,255,255,1);
+    background-color: rgba(255,255,255,0);
 }
 .panel{
     background: rgba(153, 0, 0,0.8);
