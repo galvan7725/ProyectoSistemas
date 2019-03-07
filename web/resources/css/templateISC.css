@@ -39,6 +39,10 @@ body{
     background: black;    
 }
 
+.boton:hover{
+    background:#ffffff;
+}
+
 .sidebar{
     background: rgba(153, 0, 0,0.8);
 }
@@ -46,6 +50,10 @@ body{
 .sidebar #bt{
     color: red;
     background: black;   
+}
+
+.sidebar #bt:hover{
+    background: #ffffff;
 }
 
 .texto{

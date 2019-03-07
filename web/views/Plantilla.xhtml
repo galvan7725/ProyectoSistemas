@@ -29,7 +29,7 @@
                 <h:form id="navbar">
                     <nav class="navbar navbar-expand-lg sticky-top nav-ISC">
 
-                        <p:commandButton value=">>>" class="boton" icon="ui-icon-transferthick-e-w" oncomplete="PF('sidebar1').show()" style=" margin-right: 15px;"></p:commandButton>
+                        <p:commandButton value=">" class="boton" icon="ui-icon-transferthick-e-w" oncomplete="PF('sidebar1').show()" style=" margin-right: 15px;"></p:commandButton>
 
                         <a class="navbar-brand" href="#">
                             <p:graphicImage library="images" name="msi.png" width="40" alt="user image" class="d-inline-block align-top"/>
@@ -110,8 +110,15 @@
                 <ui:insert name="left">
                     <p:sidebar widgetVar="sidebar1" class="sidebar" baseZIndex="10000">
                         <h1 class="texto text-center" style="font-weight:normal">Secciones</h1>
+                        
                         <h:form>
-
+                            <div class="text-center">
+                            <p:graphicImage id="IconoUsuario" value="RenderImage?Image_Id=0&amp;contexto=IconoSesion"  class="icono" ></p:graphicImage>
+                            <br/>
+                            <p:outputLabel value="#{templateBean.nombre} #{templateBean.carrera}" class="texto" style="font-size: small; text-align: center;"/>
+                            <br/>
+                            <p:outputLabel value="En linea" class="text-center" style="color: green; font-size: small;"/>
+                             </div>     
                             <p:menu toggleable="true" style="width: 100%;">
                                 <p:submenu label="Ajax" style="">
                                     <p:menuitem value="Save" action="#{menuView.save}"  icon="pi pi-save" />
@@ -130,7 +137,7 @@
                             </p:menu>
 
                         </h:form> 
-                        <p:commandButton id="bt" icon="ui-icon-seek-prev" iconPos="center" class="boton" oncomplete="PF('sidebar1').hide()" style="float: right;"/>
+                        <p:commandButton id="bt" icon="ui-icon-seek-prev" iconPos="center" class="boton" oncomplete="PF('sidebar1').hide()" style="float: right; margin-top: 5px;"/>
                     </p:sidebar>
                 </ui:insert>
             </div>
@@ -147,7 +154,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="text-center;">
+                                <div class="text-center">
                                     <p >© 2019 Luis Galvan . En desarrollo desde Agosto/2018
 
                                     </p>
