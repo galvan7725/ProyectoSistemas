@@ -44,7 +44,7 @@ body{
 }
 
 .sidebar{
-    background: rgba(153, 0, 0,0.8);
+    background: rgba(153, 0, 0,0.7);
 }
 
 .sidebar #bt{
@@ -53,6 +53,15 @@ body{
 }
 
 .sidebar #bt:hover{
+    background: #ffffff;
+}
+
+.sidebar #bts{
+    color: red;
+    background: black;   
+}
+
+.sidebar #bts:hover{
     background: #ffffff;
 }
 

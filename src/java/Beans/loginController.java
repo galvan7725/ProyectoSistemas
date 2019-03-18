@@ -6,6 +6,7 @@
 package Beans;
 
 import java.io.IOException;
+import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -18,14 +19,17 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean
 @RequestScoped
-public class loginController {
+public class loginController implements Serializable{
     public void verificarSesion(){
-    String usuario;
+   String usuario;
         try {
-           usuario =  (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("id_usuario");
+           usuario =(String) (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("id_usuario"));
+           System.out.println("----------------------"+usuario);
            if(usuario == null){
                System.out.println("Usuario nulo");
            FacesContext.getCurrentInstance().getExternalContext().redirect("./../login.xhtml");
+           }else{
+            System.out.println("----------------------"+usuario);
            }
         } catch (Exception e) {
         e.printStackTrace();
