@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./Plantilla.xhtml">
+
+            <ui:define name="content">
+            
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-8 col-s-10 col-xs-12" >
+                            <h:form id="form-primer-semestre" class="text-center" style="width: 210px;">
+                                <p:outputLabel value="Primer Semestre" class="texto"/>
+                                <p:dataTable id="table-primer-semestre"  value="#{reticulaBean.listarMateriasPrimerSemestre()}" var="m" emptyMessage="Sin coincidencias" style=" font-size: x-small;">
+                                    <p:column headerText="Nombre" filterBy="#{m.nombre}" filterMatchMode="contains" style="text-align: center; ">    
+                                        <p:outputLabel value="#{m.nombre}"/>
+                                    </p:column>
+                                    <p:column headerText="Clave" filterBy="#{m.clave}" filterMatchMode="contains" style="text-align: center;">
+                                        <p:outputLabel value="#{m.clave}"/>
+                                    </p:column>
+                                    <p:column headerText="Creditos" filterBy="#{m.creditos}" filterMatchMode="contains" style="text-align: center;">
+                                        <p:outputLabel value="#{m.creditos}"/>
+                                    </p:column>
+
+                                </p:dataTable>
+                            </h:form>
+                        </div>
+                        
+                        <div class="col-lg-2 col-md-8 col-s-10 col-xs-12">
+                            <h:form id="form-segundo-semestre" class="text-center" style="width: 210px;">
+                                <p:outputLabel value="Segundo Semestre" class="texto"/>
+                                <p:dataTable id="table-primer-semestre"  value="#{reticulaBean.listarMateriasSegundoSemestre()}" var="m" emptyMessage="Sin coincidencias" style=" font-size: x-small;">
+                                    <p:column headerText="Nombre" filterBy="#{m.nombre}" filterMatchMode="contains" style="text-align: center; ">    
+                                        <p:outputLabel value="#{m.nombre}"/>
+                                    </p:column>
+                                    <p:column headerText="Clave" filterBy="#{m.clave}" filterMatchMode="contains" style="text-align: center;">
+                                        <p:outputLabel value="#{m.clave}"/>
+                                    </p:column>
+                                    <p:column headerText="Creditos" filterBy="#{m.creditos}" filterMatchMode="contains" style="text-align: center;">
+                                        <p:outputLabel value="#{m.creditos}"/>
+                                    </p:column>
+
+                                </p:dataTable>
+                            </h:form>
+                        </div>
+                        <div class="col-lg-2 col-md-8 col-s-10 col-xs-12">
+                            <h:form id="form-tercer-semestre" class="text-center" style="width: 210px;">
+                                <p:outputLabel value="Tercer Semestre" class="texto"/>
+                                <p:dataTable id="table-primer-semestre"  value="#{reticulaBean.listarMateriasTercerSemestre()}" var="m" emptyMessage="Sin coincidencias" style=" font-size: x-small;">
+                                    <p:column headerText="Nombre" filterBy="#{m.nombre}" filterMatchMode="contains" style="text-align: center; ">    
+                                        <p:outputLabel value="#{m.nombre}"/>
+                                    </p:column>
+                                    <p:column headerText="Clave" filterBy="#{m.clave}" filterMatchMode="contains" style="text-align: center;">
+                                        <p:outputLabel value="#{m.clave}"/>
+                                    </p:column>
+                                    <p:column headerText="Creditos" filterBy="#{m.creditos}" filterMatchMode="contains" style="text-align: center;">
+                                        <p:outputLabel value="#{m.creditos}"/>
+                                    </p:column>
+
+                                </p:dataTable>
+                            </h:form>
+                        </div>
+                        <div class="col-lg-2 col-md-8 col-s-10 col-xs-12">
+                            <h:form id="form-cuarto-semestre" class="text-center" style="width: 210px;">
+                                <p:outputLabel value="Cuarto Semestre" class="texto"/>
+                                <p:dataTable id="table-primer-semestre"  value="#{reticulaBean.listarMateriasCuartoSemestre()}" var="m" emptyMessage="Sin coincidencias" style=" font-size: x-small;">
+                                    <p:column headerText="Nombre" filterBy="#{m.nombre}" filterMatchMode="contains" style="text-align: center; ">    
+                                        <p:outputLabel value="#{m.nombre}"/>
+                                    </p:column>
+                                    <p:column headerText="Clave" filterBy="#{m.clave}" filterMatchMode="contains" style="text-align: center;">
+                                        <p:outputLabel value="#{m.clave}"/>
+                                    </p:column>
+                                    <p:column headerText="Creditos" filterBy="#{m.creditos}" filterMatchMode="contains" style="text-align: center;">
+                                        <p:outputLabel value="#{m.creditos}"/>
+                                    </p:column>
+
+                                </p:dataTable>
+                            </h:form>
+                        </div>
+                        <div class="col-lg-2 col-md-8 col-s-10 col-xs-12">
+                            <h:form id="form-quinto-semestre" class="text-center" style="width: 210px;">
+                                <p:outputLabel value="Quinto Semestre" class="texto"/>
+                                <p:dataTable id="table-primer-semestre"  value="#{reticulaBean.listarMateriasQuintoSemestre()}" var="m" emptyMessage="Sin coincidencias" style=" font-size: x-small;">
+                                    <p:column headerText="Nombre" filterBy="#{m.nombre}" filterMatchMode="contains" style="text-align: center; ">    
+                                        <p:outputLabel value="#{m.nombre}"/>
+                                    </p:column>
+                                    <p:column headerText="Clave" filterBy="#{m.clave}" filterMatchMode="contains" style="text-align: center;">
+                                        <p:outputLabel value="#{m.clave}"/>
+                                    </p:column>
+                                    <p:column headerText="Creditos" filterBy="#{m.creditos}" filterMatchMode="contains" style="text-align: center;">
+                                        <p:outputLabel value="#{m.creditos}"/>
+                                    </p:column>
+
+                                </p:dataTable>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
